@@ -17,14 +17,13 @@ public class Example {
     String url = String.format("https://api.narakeet.com/text-to-speech/mp3?voice=%s", voice);
     String outputFilePath = "output.mp3";
 
-    byte[] utf8Bytes = text.getBytes(StandardCharsets.UTF_8);
     HttpClient httpClient = HttpClientBuilder.create().build();
     HttpPost httpPost = new HttpPost(url);
-
     httpPost.setHeader("Accept", "application/octet-stream");
     httpPost.setHeader("Content-Type", "text/plain");
     httpPost.setHeader("x-api-key", apiKey);
 
+    byte[] utf8Bytes = text.getBytes(StandardCharsets.UTF_8);
     ByteArrayEntity requestBody = new ByteArrayEntity(utf8Bytes);
     httpPost.setEntity(requestBody);
 
