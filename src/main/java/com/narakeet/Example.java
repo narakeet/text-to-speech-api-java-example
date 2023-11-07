@@ -7,10 +7,13 @@ import org.apache.http.entity.ByteArrayEntity;
 import java.nio.charset.StandardCharsets;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Example {
   public static void main(String[] args) throws java.io.FileNotFoundException, java.io.IOException {
-    String apiKey = args[0];
+
+    String apiKey = Objects.requireNonNull(System.getenv("NARAKEET_API_KEY"), "NARAKEET_API_KEY environment variable is not set");
+
     String voice = "brian";
     String text = "Hello from Java!";
 
